@@ -3,14 +3,15 @@ const btnValidarNombre = document.getElementById("btn");
 const resultadoValidacion = document.getElementById("resultado");
 
 const validarNombreTexto = (nombre) => {
-    if (typeof nombre !== "string" || nombre.trim() === "") {
-        return false;
+    let esValido = false; 
+    
+    if (typeof nombre === "string" && nombre.trim() !== "") {
+        const reglaNombre = /^[a-záéíóúüñ'\s]+$/i;
+        esValido = reglaNombre.test(nombre); 
     }
 
-    const reglaNombre = /^[a-záéíóúüñ'\s]+$/i;
+    return esValido; // 
 
-    return reglaNombre.test(nombre);
-};
 
 btnValidarNombre.addEventListener("click", () => {
     const valorNombre = inputNombreValido.value.trim(); 
